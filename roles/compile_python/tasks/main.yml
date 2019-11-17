@@ -1,0 +1,47 @@
+---
+
+- name: Install Debian package requirements
+  become: yes
+  become_user: root
+  apt:
+    update_cache: yes
+    state: latest
+    pkg:
+      - zlib1g-dev 
+      - libffi-dev
+      - libssl-dev
+      - libbz2-dev
+      - libncursesw5-dev 
+      - libgdbm-dev 
+      - liblzma-dev 
+      - libsqlite3-dev 
+      - tk-dev 
+      - uuid-dev 
+      - libreadline-dev
+      - libgdbm-compat-dev
+      - libsqlite3-dev
+
+- name: Clone Python git repository
+  git:
+    repo: "git@github.com:python/cpython.git"
+    dest: "{{ tmp_folder }}"
+    version: "{{ python_version }}"
+
+- name: Configure Python
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ tmp_folder }}"
+  with_items:
+    - ./configure --prefix="{{ dest_folder }}"
+
+- name: Build target with extra arguments
+  make:
+    chdir: "{{ tmp_folder }}"
+    params:
+      NUM_THREADS: 4
+
+- name: Run 'install' target
+  make:
+    chdir: "{{ tmp_folder }}"
+    target: install
+ 

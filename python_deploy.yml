@@ -1,0 +1,8 @@
+---
+  - hosts: localhost
+    roles:
+      - compile_python
+    vars:
+        python_version: "v3.8.0"
+        tmp_folder: /tmp/python
+        dest_folder: /home/imarin/lib/python
