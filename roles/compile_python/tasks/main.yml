@@ -20,6 +20,7 @@
       - libreadline-dev
       - libgdbm-compat-dev
       - libsqlite3-dev
+      - libffi-dev
 
 - name: Clone Python git repository
   git:
