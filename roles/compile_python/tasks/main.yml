@@ -32,7 +32,7 @@
   args:
     chdir: "{{ tmp_folder }}"
   with_items:
-    - ./configure --prefix="{{ dest_folder }}"
+    - ./configure --enable-shared --enable-ipv6 --enable-loadable-sqlite-extensions --with-computed-gotos --with-system-ffi --with-system-libmpdec CFLAGS='-fstack-protector-strong -Wformat -Werror=format-security' LDFLAGS='-Wl,-z,relro,-rpath="{{ dest_folder }}"/lib' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' --prefix="{{ dest_folder }}"
 
 - name: Build target with extra arguments
   make:
