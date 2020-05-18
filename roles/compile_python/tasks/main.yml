@@ -1,26 +1,10 @@
 ---
 
-- name: Install Debian package requirements
-  become: yes
-  become_user: root
-  apt:
-    update_cache: yes
-    state: latest
-    pkg:
-      - zlib1g-dev 
-      - libffi-dev
-      - libssl-dev
-      - libbz2-dev
-      - libncursesw5-dev 
-      - libgdbm-dev 
-      - liblzma-dev 
-      - libsqlite3-dev 
-      - tk-dev 
-      - uuid-dev 
-      - libreadline-dev
-      - libgdbm-compat-dev
-      - libsqlite3-dev
-      - libffi-dev
+- include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include: manjaro.yml
+  when: ansible_os_family == 'Archlinux'
 
 - name: Clone Python git repository
   git:

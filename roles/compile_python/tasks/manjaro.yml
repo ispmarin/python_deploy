@@ -1,0 +1,21 @@
+- name: Install Manjaro package requirements
+  become: yes
+  become_user: root
+  pacman:
+    # update_cache: yes
+    state: latest
+    name:
+      - zlib
+      - libffi
+      - ssl
+      - bz2
+      - ncurses
+      - libgdbm
+      - liblzma
+      - libsqlite3
+      - tk
+      - uuid
+      - libreadline
+      - libgdbm-compat
+      - libsqlite3
+      - libffi
