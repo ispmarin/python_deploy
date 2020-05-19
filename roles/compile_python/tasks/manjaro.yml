@@ -2,20 +2,17 @@
   become: yes
   become_user: root
   pacman:
-    # update_cache: yes
+    update_cache: yes
     state: latest
     name:
       - zlib
       - libffi
-      - ssl
-      - bz2
+      - openssl
+      - bzip2
       - ncurses
-      - libgdbm
-      - liblzma
-      - libsqlite3
+      - gdbm
+      - xz
+      - sqlite
       - tk
-      - uuid
-      - libreadline
-      - libgdbm-compat
-      - libsqlite3
-      - libffi
+      #- uuid
+      - readline
