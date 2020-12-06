@@ -3,6 +3,6 @@
     roles:
       - compile_python
     vars:
-        python_version: "v3.8.2"
+        python_version: "v3.8.6"
         tmp_folder: /tmp/python
         dest_folder: /home/imarin/lib/python

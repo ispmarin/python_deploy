@@ -6,6 +6,8 @@
 - include: manjaro.yml
   when: ansible_os_family == 'Archlinux'
 
+# TODO: remove destination before cloning
+
 - name: Clone Python git repository
   git:
     repo: "git@github.com:python/cpython.git"

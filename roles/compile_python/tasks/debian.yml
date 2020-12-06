@@ -17,4 +17,4 @@
       - uuid-dev 
       - libreadline-dev
       - libgdbm-compat-dev
-      - libmpde-dev
+#      - libmpde-dev # does not exist on debian 10
